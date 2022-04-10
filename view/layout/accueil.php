@@ -4,7 +4,7 @@
     <div class="shadow-lg flex flex-wrap w-full mx-auto">
 
         <!-- Card image -->
-        <div class="bg-cover bg-bottom border w-full md:w-1/3 h-64 md:h-auto relative" style="background-image:url('https://images7.alphacoders.com/347/347549.jpg')">
+        <div class="bg-cover bg-bottom border w-full md:w-1/3 h-64 md:h-auto relative" style="background-image:url('https://lyon-rhone.fff.fr/wp-content/uploads/sites/105/2017/10/cep-football-ballon-611x378.jpg')">
             <div class="absolute text-xl">
                 <i class="fa fa-heart text-white hover:text-red-light ml-4 mt-4 cursor-pointer"></i>
             </div>
