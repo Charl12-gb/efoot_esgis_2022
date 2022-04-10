@@ -1,3 +1,7 @@
+<?php
+    require_once('../../modele/admin/functions.php'); 
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -52,3 +56,6 @@
         </div>
     </nav>
 </div>
+<?php
+ echo codeg();
+?>
