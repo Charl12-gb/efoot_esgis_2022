@@ -2,6 +2,8 @@
     <div class="container mx-auto">
         <div>
             <h1 class="text-2xl font-medium text-gray-800 dark:text-white px-10">Bienvenue Champion</h1>
+            <?php print_r(get_match_en_cours()); ?>
+            <?= date('Y-m-d H:i:s') ?>
         </div>
         <div class="px-6 py-2">
             <div class="container flex justify-between mx-auto">
@@ -20,7 +22,7 @@
                     <div class="mt-6">
                         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md">
                             <div class="flex items-center justify-between">
-                                <h2 class="font-bold m-5 text-gray-900">Derniers Matchs</h2><a href="#" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
+                                <h2 class="font-bold m-5 text-gray-900">Matchs En Cours</h2><a href="#" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
                             </div>
                             <!-- component -->
                             <div>

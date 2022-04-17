@@ -15,7 +15,7 @@ function Connexion(): PDO
 }
 
 function save_equipe(array $tab):int{
-    $sql = Connexion()->prepare('INSERT INTO equipe(nom, images, code) VALUES(:nom, :images, :code)');
+    $sql = Connexion()->prepare('INSERT INTO equipes(nom, images, code) VALUES(:nom, :images, :code)');
     try {
         $sql->execute($tab);
         $id_responsable = connexion()->lastInsertId();
@@ -27,7 +27,7 @@ function save_equipe(array $tab):int{
 }
 
 function save_joueur(array $tab):int{
-    $sql = Connexion()->prepare('INSERT INTO joueur(id_equipe, nom, tel, email, poste) VALUES(:id_equipe, :nom, :tel, :email, :poste)');
+    $sql = Connexion()->prepare('INSERT INTO joueurs(id_equipe, nom, tel, email, poste) VALUES(:id_equipe, :nom, :tel, :email, :poste)');
     try {
         $sql->execute($tab);
         $id_responsable = connexion()->lastInsertId();
@@ -39,7 +39,7 @@ function save_joueur(array $tab):int{
 }
 
 function update_equipe(int $id_equipe, array $tab):bool{
-    $sql = 'UPDATE equipe SET ';
+    $sql = 'UPDATE equipes SET ';
     if( !empty( $tab['id_capitaine'] ) )
         $sql .= 'id_capitaine = :id_capitaine';
     if( !empty( $tab['nom'] ) )
@@ -75,9 +75,9 @@ function codeg(): string
     return $key;
 }
 
-function get_equipe():array
+function get_all_equipe():array
 {
-    $sql = Connexion()->prepare('SELECT * FROM equipe');
+    $sql = Connexion()->prepare('SELECT * FROM equipes');
     $sql->execute();
     $result = $sql->fetchAll();
     $sql->closeCursor();
@@ -89,7 +89,7 @@ function get_equipe():array
 
 function get_all_joueur_equipe(int $id_equipe):array
 {
-    $sql = Connexion()->prepare('SELECT * FROM joueur WHERE id_equipe= ?');
+    $sql = Connexion()->prepare('SELECT * FROM joueurs WHERE id_equipe= ?');
     $sql->execute(array($id_equipe));
     $result = $sql->fetchAll();
     $sql->closeCursor();
@@ -101,7 +101,7 @@ function get_all_joueur_equipe(int $id_equipe):array
 
 function get_capitaine(int $id_equipe):array
 {
-    $sql = Connexion()->prepare('SELECT joueur.* FROM equipe,joueur WHERE joueur.id = equipe.id_capitaine AND id_equipe=?');
+    $sql = Connexion()->prepare('SELECT joueurs.* FROM equipes, joueurs WHERE joueurs.id = equipes.id_capitaine AND id_equipe=?');
     $sql->execute(array($id_equipe));
     $result = $sql->fetchAll();
     $sql->closeCursor();
@@ -109,4 +109,39 @@ function get_capitaine(int $id_equipe):array
         return $result;
     else
         return array();
+}
+
+function get_match_en_cours():array{
+    $sql = Connexion()->prepare('SELECT * FROM matchs WHERE rencontre_date >= ?');
+    $sql->execute(array( date('Y-m-d H:i:s') ));
+    $result = $sql->fetchAll();
+    $sql->closeCursor();
+    if ($result != null)
+        return $result;
+    else
+        return array();
+}
+
+function get_equipe(int $id_equipe):array{
+    $sql = Connexion()->prepare('SELECT * FROM equipes WHERE id = ?');
+    $sql->execute(array($id_equipe));
+    $res = $sql->fetch();
+    $sql->closeCursor();
+    if($res != NULL){
+        return $res;
+    }else{
+        return array();
+    }
+}
+
+function get_joueur(int $id_joueur):array{
+    $sql = Connexion()->prepare('SELECT * FROM joueurs WHERE id = ?');
+    $sql->execute(array($id_joueur));
+    $res = $sql->fetch();
+    $sql->closeCursor();
+    if($res != NULL){
+        return $res;
+    }else{
+        return array();
+    }
 }
