@@ -110,3 +110,4 @@ function get_capitaine(int $id_equipe):array
     else
         return array();
 }
+
