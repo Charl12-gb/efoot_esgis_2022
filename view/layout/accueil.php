@@ -2,8 +2,6 @@
     <div class="container mx-auto">
         <div>
             <h1 class="text-2xl font-medium text-gray-800 dark:text-white px-10">Bienvenue Champion</h1>
-            <?php print_r(get_match_en_cours()); ?>
-            <?= date('Y-m-d H:i:s') ?>
         </div>
         <div class="px-6 py-2">
             <div class="container flex justify-between mx-auto">
