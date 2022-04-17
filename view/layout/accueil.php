@@ -20,24 +20,26 @@
                     <div class="mt-6">
                         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md">
                             <div class="flex items-center justify-between">
-                                <h2 class="font-bold m-5 text-gray-900">Matchs En Cours</h2><a href="#" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
+                                <h2 class="font-bold m-5 text-gray-900">Prochains Matchs</h2><a href="#" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
                             </div>
                             <!-- component -->
                             <div>
                                 <div class="text-gray-500 md:px-12 xl:px-0">
                                     <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-2">
-                                        <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 text-gray-100 bg-gray-600">
-                                            <div class="space-y-4">
-                                                <h3 class="text-2xl font-semibold text-yellow-300">Graphic Design</h3>
-                                                <p class="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
+                                        <?php
+                                        $prochaine_matchs = get_prochaine_match(2);
+                                        foreach ($prochaine_matchs as $key => $value) {
+                                        ?>
+                                            <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 text-gray-100 bg-gray-600">
+                                                <div class="space-y-4">
+                                                    <h3 class="text-2xl font-semibold"><span class="text-yellow-300"><?= get_equipe_name( $value['id_equipe1'] ) ?></span> vs <span class="text-teal-300"><?= get_equipe_name( $value['id_equipe2'] ) ?></span></h3>
+                                                    <p class="text-[12px]"><?= get_name_capitaine($value['id_equipe1'] ) ?> || <?= get_name_capitaine( $value['id_equipe2'] ) ?></p>
+                                                    <p class="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 text-gray-100 bg-gray-600">
-                                            <div class="space-y-4">
-                                                <h3 class="text-2xl font-semibold text-yellow-300">UI Design</h3>
-                                                <p class="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
-                                            </div>
-                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

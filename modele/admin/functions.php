@@ -99,9 +99,9 @@ function get_all_joueur_equipe(int $id_equipe):array
         return array();
 }
 
-function get_match_en_cours(int $limit ):array{
+function get_prochaine_match(int $limit=0 ):array{
     $requete = 'SELECT * FROM matchs WHERE rencontre_date >= ? ';
-    if(!empty( $limit ))
+    if( $limit != 0 )
         $requete .= ' LIMIT '.$limit;
     $sql = Connexion()->prepare( $requete );
     $sql->execute(array( date('Y-m-d H:i:s') ));
