@@ -99,18 +99,6 @@ function get_all_joueur_equipe(int $id_equipe):array
         return array();
 }
 
-function get_capitaine(int $id_equipe):array
-{
-    $sql = Connexion()->prepare('SELECT joueurs.* FROM equipes, joueurs WHERE joueurs.id = equipes.id_capitaine AND id_equipe=?');
-    $sql->execute(array($id_equipe));
-    $result = $sql->fetchAll();
-    $sql->closeCursor();
-    if ($result != null)
-        return $result;
-    else
-        return array();
-}
-
 function get_match_en_cours(int $limit ):array{
     $requete = 'SELECT * FROM matchs WHERE rencontre_date >= ? ';
     if(!empty( $limit ))
@@ -151,7 +139,7 @@ function get_joueur(int $id_joueur):array{
 
 function get_equipe_name( int $id_equipe ):string{
     $equipe = get_equipe( $id_equipe );
-    return $equipe['nom'];
+    return $equipe['nomEquipe'];
 }
 
 function get_equipe_img( int $id_equipe ):string{
@@ -163,6 +151,11 @@ function get_equipe_capitaine( int $id_equipe ):array{
     $equipe = get_equipe( $id_equipe );
     $id_capitaine = $equipe['id_capitaine'];
     return get_joueur( $id_capitaine );
+}
+
+function get_name_capitaine( int $id_equipe ){
+    $capitaine = get_equipe_capitaine( $id_equipe );
+    return $capitaine['nom'];
 }
 
 function get_joueur_name( int $id_joueur ):string{
