@@ -139,7 +139,7 @@ function get_joueur(int $id_joueur):array{
 
 function get_equipe_name( int $id_equipe ):string{
     $equipe = get_equipe( $id_equipe );
-    return $equipe['nom'];
+    return $equipe['nomEquipe'];
 }
 
 function get_equipe_img( int $id_equipe ):string{
@@ -151,6 +151,11 @@ function get_equipe_capitaine( int $id_equipe ):array{
     $equipe = get_equipe( $id_equipe );
     $id_capitaine = $equipe['id_capitaine'];
     return get_joueur( $id_capitaine );
+}
+
+function get_name_capitaine( int $id_equipe ){
+    $capitaine = get_equipe_capitaine( $id_equipe );
+    return $capitaine['nom'];
 }
 
 function get_joueur_name( int $id_joueur ):string{
