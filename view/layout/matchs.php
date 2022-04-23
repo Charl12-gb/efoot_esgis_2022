@@ -2,7 +2,7 @@
 <div class="text-gray-500 md:px-8 xl:px-0">
     <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-2">                                
         <?php
-            foreach (get_all_prochains_match() as $value) {
+            foreach (get_prochaine_match() as $value) {
                 ?>
                     <div class="bg-white rounded-2xl text-center shadow-xl px-4 py-8 sm:px-8 text-gray-100 bg-gray-600">
                         <div>
@@ -33,7 +33,7 @@
 <div class="text-gray-500 md:px-8 xl:px-0">
     <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-2">                                
         <?php
-            foreach (get_all_jouéesdeja_match() as $value) {
+            foreach (get_match_play() as $value) {
                 ?>
                     <div class="bg-white rounded-2xl text-center shadow-xl px-4 py-8 sm:px-8 text-gray-100 bg-gray-600">
                         <div>
