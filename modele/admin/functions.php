@@ -204,3 +204,26 @@ function get_match_play( ):array{
     else
         return array();
 }
+
+function get_all_prochains_match():array{
+    $sql = Connexion()->prepare('SELECT * FROM matchs WHERE rencontre_date >= ? ');
+    $sql->execute(array( date('Y-m-d H:i:s',  strtotime('-1 hours')) ));
+    $result = $sql->fetchAll();
+    $sql->closeCursor();
+    if ($result != null)
+        return $result;
+    else
+        return array();
+}
+
+
+function get_all_jouéesdeja_match():array{
+    $sql = Connexion()->prepare('SELECT * FROM matchs WHERE rencontre_date < ? ');
+    $sql->execute(array( date('Y-m-d H:i:s',  strtotime('-1 hours')) ));
+    $result = $sql->fetchAll();
+    $sql->closeCursor();
+    if ($result != null)
+        return $result;
+    else
+        return array();
+}
