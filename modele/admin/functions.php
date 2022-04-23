@@ -104,7 +104,7 @@ function get_prochaine_match(int $limit=0 ):array{
     if( $limit != 0 )
         $requete .= ' LIMIT '.$limit;
     $sql = Connexion()->prepare( $requete );
-    $sql->execute(array( date('Y-m-d H:i:s') ));
+    $sql->execute(array( date('Y-m-d H:i:s',  strtotime('-1 hours')) ));
     $result = $sql->fetchAll();
     $sql->closeCursor();
     if ($result != null)
@@ -187,4 +187,20 @@ function get_joueur_equipe( int $id_joueur ):string{
     $joueur = get_joueur( $id_joueur );
     $id_equipe = $joueur['id_equipe'];
     return get_equipe_name( $id_equipe );
+}
+
+function format_date( $date ){
+    $date_format = date_create($date);
+    return date_format($date_format, 'd-m-Y à H:i');
+}
+
+function get_match_play( ):array{
+    $requete = 'SELECT * FROM matchs, statistique WHERE matchs.id=id_match';
+    $sql = Connexion()->prepare($requete);
+    $sql->execute();
+    $res = $sql->fetchAll();
+    if( $res != null )
+        return $res;
+    else
+        return array();
 }
