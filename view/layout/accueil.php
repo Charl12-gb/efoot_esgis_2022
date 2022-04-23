@@ -53,7 +53,8 @@
                     <div class="mt-6">
                         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md">
                             <div class="flex items-center justify-between">
-                                <h2 class="font-bold m-5 text-gray-900">Prochains Matchs</h2><a href="#" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
+                                <h2 class="font-bold m-5 text-gray-900">Prochains Matchs</h2>
+                                <a href="../../efoot/match" class="px-2 py-1 font-bold text-yellow-500 bg-indigo-900 rounded hover:bg-indigo-100">Tout voir > </a>
                             </div>
                             <!-- component -->
                             <div>

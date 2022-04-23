@@ -46,7 +46,7 @@
                     </div>
                     <div class="flex justify-between">
                         <div>
-                            <input class="cursor-pointer" type="radio" name="rememberme">
+                            <input class="cursor-pointer" type="checkbox" name="rememberme">
                             <span class="text-sm">User PassWord</span>
                         </div>
                         <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
