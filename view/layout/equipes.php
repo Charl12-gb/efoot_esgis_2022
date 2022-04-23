@@ -1,7 +1,7 @@
 <main class="flex-1 overflow-x-hidden overflow-y-auto">
     <div class="container mx-auto">
         <h2 class="text-2xl font-bold text-gray-700 ml-10">Les équipes participantes</h2>
-        <div class="pt-6 pb-12 bg-gray-300">
+        <div class="pt-6 pb-12 bg-gray-200">
             <?php
             foreach (get_all_equipe() as $value) {
                 $colequipe = 'col' . $value['id'];
