@@ -37,22 +37,29 @@
                     <span class="text-sm text-white-900">Welcome back</span>
                     <h1 class="text-2xl font-bold">Login to your account</h1>
                 </div>
-                <form action="" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+                <form action="" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" method="POST">
+                <input type="hidden" id="verifiemail" name="verifiemail" value="verifimail">
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="email" name="password" placeholder="email">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="email" name="email" placeholder="exemple@gmail.com">
+                        <input type="hidden" id="capitaines" name="capitaines" value="capitain">
                     </div>
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="password" name="password" placeholder="password">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="password" name="password" placeholder="Mot de passe">
+                    </div>
+                    <div class="pb-2 pt-4">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="text" name="code" placeholder="Code">
+                        <input type="hidden" name="action" value="code">
                     </div>
                     <div class="flex justify-between">
                         <div>
-                            <input class="cursor-pointer" type="checkbox" name="rememberme">
+                            <input class="cursor-pointer" type="checkbox" name="box">
+                            <input type="hidden" name="action" value="mdp">
                             <span class="text-sm">User PassWord</span>
                         </div>
                         <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
                     </div>
                     <div class="px-4 pb-2 pt-4">
-                        <button class="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100">Login now</button>
+                        <button type="submit" class="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100">Login now</button>
                     </div>
                 </form>
             </div>
