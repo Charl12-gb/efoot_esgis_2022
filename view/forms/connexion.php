@@ -15,7 +15,7 @@
 
     <!-- component -->
     <section class="min-h-screen flex items-stretch text-white ">
-        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
+        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://thumbs.dreamstime.com/b/ballon-de-football-sur-le-terrain-de-football-37831693.jpg);">
             <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             <div class="w-full px-24 z-10">
                 <h1 class="text-5xl font-bold text-left tracking-wide">E-FOOT</h1>
@@ -23,19 +23,19 @@
             </div>
         </div>
         <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
-            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
+            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://thumbs.dreamstime.com/b/ballon-de-football-sur-le-terrain-de-football-37831693.jpg);">
                 <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             </div>
             <div class="w-full py-6 z-20" id="actualispage">
                 <div>
-                    <span class="text-sm text-white-900">Welcome back</span>
-                    <h1 class="text-2xl font-bold">Login to your account</h1>
+                    <h1 class="text-2xl font-bold">Bienvenu sur E-FOOT</h1>
+                    <span class="text-sm text-white-900">Veuillez entrer des informations valides!</span>
                 </div>
                 <?php
                 if (isset($_REQUEST['mailFalse'])) {
                 ?>
                     <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
-                        A simple danger alert - check it out!
+                        Une erreur s'est produite! Réessayer!
                     </div>
                 <?php
                 }
@@ -66,16 +66,16 @@
                         <div class="flex justify-between">
                             <div>
                                 <input class="cursor-pointer" type="checkbox" name="box" id="box">
-                                <span class="text-sm">User PassWord</span>
+                                <span class="text-sm">With Password</span>
                             </div>
-                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
                         </div>
                     <?php
                     }else{
                         ?>
                         <div class="flex justify-between">
                             <div></div>
-                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
                         </div>
                         <input class="cursor-pointer" type="hidden" name="action" id="action" value="connect">
                     <?php
