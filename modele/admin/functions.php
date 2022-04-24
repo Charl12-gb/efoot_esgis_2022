@@ -194,7 +194,7 @@ function format_date( $date ){
     return date_format($date_format, 'd-m-Y à H:i');
 }
 
-function get_match_play( ):array{
+function get_match_play():array{
     $requete = 'SELECT * FROM matchs, statistique WHERE matchs.id=id_match';
     $sql = Connexion()->prepare($requete);
     $sql->execute();
@@ -203,4 +203,63 @@ function get_match_play( ):array{
         return $res;
     else
         return array();
+}
+
+function get_connexion(string $mail, string $clef, string $type):int{
+    if($type == "capitaine"){
+        $sql = Connexion()->prepare('SELECT id FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ? AND code = ?');
+    }
+    if($type == "admin"){
+        $sql = Connexion()->prepare('SELECT id FROM users WHERE email = ? AND mdp = ?');
+    }
+    try{
+        $sql->execute(array($mail, $clef));
+        $result = $sql->rowCount();
+        $sql->closeCursor();
+        return $result;
+    }catch(\Throwable $th){
+        return -1;
+    }
+}
+
+function motdepassvide(String $mail, String $type): string
+{
+    if ($type == 'admin'){
+        $sql = Connexion()->prepare('SELECT mdp FROM users WHERE email = ?');
+    }
+    if ($type == 'capitaine'){
+        $sql = connexion()->prepare('SELECT code FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ?');
+    }
+    try{
+        $sql->execute(array($mail));
+        $result = $sql->fetch();
+        $sql->closeCursor();
+        return $result;
+        if ($result['mdp'] == '' || $result['code'] == ''){
+            return 'false';
+        }
+        else{
+            return 'true';
+        }
+    }catch(\Throwable $th){
+        return 'false';
+    }
+}
+
+
+function verifie_email(String $mail, String $type): String
+{
+    if ($type == 'admin'){
+        $sql = Connexion()->prepare('SELECT id FROM users WHERE email = ?');
+    }
+    if ($type == 'capitaine'){
+        $sql = Connexion()->prepare('SELECT id FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ?');
+    }
+    $sql->execute(array($mail));
+    $result = $sql->rowCount();
+    $sql->closeCursor();
+    if ($result > 0) {
+        return $retour = motdepassvide($mail, $type);
+    } else
+        return "N'existe pas";
 }
