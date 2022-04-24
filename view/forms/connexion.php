@@ -35,7 +35,7 @@
                 if (isset($_REQUEST['mailFalse'])) {
                 ?>
                     <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
-                        A simple danger alert - check it out!
+                        Une erreur s'est produite! Réessayer!
                     </div>
                 <?php
                 }
@@ -66,16 +66,16 @@
                         <div class="flex justify-between">
                             <div>
                                 <input class="cursor-pointer" type="checkbox" name="box" id="box">
-                                <span class="text-sm">User PassWord</span>
+                                <span class="text-sm">With Password</span>
                             </div>
-                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
                         </div>
                     <?php
                     }else{
                         ?>
                         <div class="flex justify-between">
                             <div></div>
-                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
                         </div>
                         <input class="cursor-pointer" type="hidden" name="action" id="action" value="connect">
                     <?php
