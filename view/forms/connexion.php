@@ -5,15 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.3/dist/flowbite.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.3/dist/flowbite.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>E-FOOT</title>
 </head>
 
@@ -32,39 +26,71 @@
             <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://thumbs.dreamstime.com/b/ballon-de-football-sur-le-terrain-de-football-37831693.jpg);">
                 <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             </div>
-            <div class="w-full py-6 z-20">
+            <div class="w-full py-6 z-20" id="actualispage">
                 <div>
                     <h1 class="text-2xl font-bold">Bienvenu sur E-FOOT</h1>
                     <span class="text-sm text-white-900">Veuillez entrer des informations valides!</span>
                 </div>
-                <form action="" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" method="POST">
-                <input type="hidden" id="verifiemail" name="verifiemail" value="verifimail">
-                    <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="email" name="email" placeholder="exemple@gmail.com">
-                        <input type="hidden" id="capitaines" name="capitaines" value="capitain">
+                <?php
+                if (isset($_REQUEST['mailFalse'])) {
+                ?>
+                    <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+                        A simple danger alert - check it out!
                     </div>
+                <?php
+                }
+                ?>
+                <form class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" <?php if (isset($_REQUEST['mailTrue'])) { ?> action="../../modele/admin/connexion_trait.php" <?php } else { ?> name="myForm" id="myForm" <?php  }  ?> method="POST">
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="password" name="password" placeholder="Mot de passe">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="email" name="email" id="email" placeholder="exemple@gmail.com" <?php if (isset($_REQUEST['email'])) echo "value='" . $_REQUEST['email'] . "'" ?>>
                     </div>
-                    <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="text" name="code" placeholder="Code">
-                        <input type="hidden" name="action" value="code">
-                    </div>
-                    <div class="flex justify-between">
-                        <div>
-                            <input class="cursor-pointer" type="checkbox" name="box">
-                            <input type="hidden" name="action" value="mdp">
-                            <span class="text-sm">Code</span>
+                    <?php
+                    if (isset($_REQUEST['mail1'])) {
+                    ?>
+                        <div class="pb-2 pt-4">
+                            <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="password" id="password" name="password" placeholder="Mot de passe">
                         </div>
-                        <span class="text-sm text-white-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
-                    </div>
+                        <input class="cursor-pointer" type="hidden" name="type" id="type" value="admin">
+                    <?php
+                    }
+                    if (isset($_REQUEST['mail2'])) {
+                    ?>
+                        <div class="pb-2 pt-4">
+                            <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="text" name="code" id="code" placeholder="Code">
+                        </div>
+                        <input class="cursor-pointer" type="hidden" name="type" id="type" value="joueur">
+                    <?php
+                    }
+                    if (!(isset($_REQUEST['mailTrue']))) {
+                    ?>
+                        <div class="flex justify-between">
+                            <div>
+                                <input class="cursor-pointer" type="checkbox" name="box" id="box">
+                                <span class="text-sm">User PassWord</span>
+                            </div>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                        </div>
+                    <?php
+                    }else{
+                        ?>
+                        <div class="flex justify-between">
+                            <div></div>
+                            <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                        </div>
+                        <input class="cursor-pointer" type="hidden" name="action" id="action" value="connect">
+                    <?php
+                    }
+                    ?>
+
                     <div class="px-4 pb-2 pt-4">
-                        <button type="submit" class="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100">Login now</button>
+                        <button type="submit" class="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100"><?php if (isset($_REQUEST['email'])) echo "Connexion"; else echo 'Next'; ?></button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
+    <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
+    <script src="../../modele/admin/js.js"></script>
 </body>
 
 </html>

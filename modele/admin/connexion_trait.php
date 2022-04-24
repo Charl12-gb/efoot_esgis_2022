@@ -1,39 +1,30 @@
-<?php
-if (isset($_POST['box'])) {
-    if (isset($_POST['action'])) {
-        if (($_POST['action']) == 'verifiemail') {
-            $email = htmlspecialchars($_POST['email']);
-            $verifiemail = verifie_email($email, 'admin');
-            echo $verifiemail;
-        } else if ($_POST['action'] == 'mdp') {
-            $email = htmlspecialchars($_POST['email']);
-            $mdp = htmlspecialchars(md5($_POST['password']));
-            $idadmin = get_connexion($email, $mdp, 'mdp');
-            if ($idadmin != -1) {
-                $_SESSION['id'] = $idadmin;
-                echo 'success';
-                exit;
-            } else {
-                echo 'erreur';
-                exit;
+<?php 
+require_once('functions.php');
+if(isset( $_POST['action'] )){
+    if( $_POST['action'] == 'verifie' ){
+        $email = htmlspecialchars( $_POST['email'] );
+        $type = htmlspecialchars( $_POST['type'] );
+        if (mailExist( $email, $type ) ) echo 'true';
+        else echo 'false';
+    }elseif($_POST['action'] == 'connect' ){
+        $email = htmlspecialchars( $_POST['email'] );
+        $cles = htmlspecialchars( md5( sha1( $_POST['password'] ) ) );
+        $type = htmlspecialchars( $_POST['type'] );
+        $id = get_connect( $email, $cles, $type );
+        if( $id == -1 ){
+            header('Location: ./../../../view/forms/connexion.php');
+            exit;
+        }else{
+            $_SESSION['id_user'] = $id;
+            if( $type == 'admin' ){
+                //rediction admin page
+            }else{
+                //redirection joueur page
             }
         }
+    }else{
+        //redirection
     }
-} else {
-    if (($_POST['action']) == 'verifiemail') {
-        $email = htmlspecialchars($_POST['email']);
-        $verifiemail = verifie_email($email, 'capitaine');
-        echo $verifiemail;
-    } else if ($_POST['action'] == 'code') {
-        $code = htmlspecialchars($_POST['code']);
-        $email = htmlspecialchars($_POST['email']);
-        $idcapitaine = get_connexion($email, $code, 'code');
-        if ($idmembre != -1) {
-            echo 'success';
-            exit;
-        } else {
-            echo 'erreur';
-            exit;
-        }
-    }
+}else{
+    //redirection
 }

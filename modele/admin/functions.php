@@ -205,13 +205,11 @@ function get_match_play():array{
         return array();
 }
 
-function get_connexion(string $mail, string $clef, string $type):int{
-    if($type == "capitaine"){
+function get_connect(string $mail, string $clef, string $type):int{
+    if($type == "joueur")
         $sql = Connexion()->prepare('SELECT id FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ? AND code = ?');
-    }
-    if($type == "admin"){
+    if($type == "admin")
         $sql = Connexion()->prepare('SELECT id FROM users WHERE email = ? AND mdp = ?');
-    }
     try{
         $sql->execute(array($mail, $clef));
         $result = $sql->rowCount();
@@ -222,44 +220,16 @@ function get_connexion(string $mail, string $clef, string $type):int{
     }
 }
 
-function motdepassvide(String $mail, String $type): string
-{
-    if ($type == 'admin'){
-        $sql = Connexion()->prepare('SELECT mdp FROM users WHERE email = ?');
-    }
-    if ($type == 'capitaine'){
-        $sql = connexion()->prepare('SELECT code FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ?');
-    }
-    try{
-        $sql->execute(array($mail));
-        $result = $sql->fetch();
-        $sql->closeCursor();
-        return $result;
-        if ($result['mdp'] == '' || $result['code'] == ''){
-            return 'false';
-        }
-        else{
-            return 'true';
-        }
-    }catch(\Throwable $th){
-        return 'false';
-    }
-}
 
-
-function verifie_email(String $mail, String $type): String
-{
-    if ($type == 'admin'){
-        $sql = Connexion()->prepare('SELECT id FROM users WHERE email = ?');
-    }
-    if ($type == 'capitaine'){
-        $sql = Connexion()->prepare('SELECT id FROM equipes, joueurs WHERE joueurs.id_equipe = equipes.id_capitaine AND email = ?');
-    }
+function mailExist(String $mail, String $type): bool{
+    if ($type == 'admin')
+        $requete = 'SELECT id FROM users WHERE email = ?';
+    if ($type == 'joueur')
+        $requete = 'SELECT id FROM joueurs WHERE email = ?';
+    $sql= Connexion()->prepare( $requete );
     $sql->execute(array($mail));
     $result = $sql->rowCount();
     $sql->closeCursor();
-    if ($result > 0) {
-        return $retour = motdepassvide($mail, $type);
-    } else
-        return "N'existe pas";
+    if ($result > 0) return true;
+    else return false;
 }
