@@ -21,7 +21,7 @@
 
     <!-- component -->
     <section class="min-h-screen flex items-stretch text-white ">
-        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
+        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://thumbs.dreamstime.com/b/ballon-de-football-sur-le-terrain-de-football-37831693.jpg);">
             <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             <div class="w-full px-24 z-10">
                 <h1 class="text-5xl font-bold text-left tracking-wide">E-FOOT</h1>
@@ -29,34 +29,34 @@
             </div>
         </div>
         <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
-            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
+            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://thumbs.dreamstime.com/b/ballon-de-football-sur-le-terrain-de-football-37831693.jpg);">
                 <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             </div>
             <div class="w-full py-6 z-20">
                 <div>
-                    <span class="text-sm text-white-900">Welcome back</span>
-                    <h1 class="text-2xl font-bold">Login to your account</h1>
+                    <h1 class="text-2xl font-bold">Bienvenu sur E-FOOT</h1>
+                    <span class="text-sm text-white-900">Veuillez entrer des informations valides!</span>
                 </div>
                 <form action="" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" method="POST">
                 <input type="hidden" id="verifiemail" name="verifiemail" value="verifimail">
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="email" name="email" placeholder="exemple@gmail.com">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="email" name="email" placeholder="exemple@gmail.com">
                         <input type="hidden" id="capitaines" name="capitaines" value="capitain">
                     </div>
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="password" name="password" placeholder="Mot de passe">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="password" name="password" placeholder="Mot de passe">
                     </div>
                     <div class="pb-2 pt-4">
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-black outline-none" type="text" name="code" placeholder="Code">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm bg-white outline-none" type="text" name="code" placeholder="Code">
                         <input type="hidden" name="action" value="code">
                     </div>
                     <div class="flex justify-between">
                         <div>
                             <input class="cursor-pointer" type="checkbox" name="box">
                             <input type="hidden" name="action" value="mdp">
-                            <span class="text-sm">User PassWord</span>
+                            <span class="text-sm">Code</span>
                         </div>
-                        <span class="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+                        <span class="text-sm text-white-700 hover:underline cursor-pointer">Mot de passe oublié?</span>
                     </div>
                     <div class="px-4 pb-2 pt-4">
                         <button type="submit" class="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100">Login now</button>
